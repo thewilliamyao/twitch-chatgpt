@@ -81,13 +81,7 @@ bot.onMessage(async (channel, user, message, self) => {
 
     console.log(`printing user object`);
     console.dir(user, { depth: null});
-    console.log(JSON.stringify(user, null, 2));
     console.log(`user ${user.username} is a sub? ${user.subscriber}`);
-
-    if (!user.subscriber) {
-        bot.say(channel, `Fufu can only communicate with subscribed weary souls at the moment, please consider subscribing to TofuSenpai to support my development!`);
-        return;
-    }
 
     if (ENABLE_CHANNEL_POINTS === 'true' && user['msg-id'] === 'highlighted-message') {
         console.log(`Highlighted message: ${message}`);
@@ -107,6 +101,12 @@ bot.onMessage(async (channel, user, message, self) => {
             bot.say(channel, `Cooldown active. Please wait ${COOLDOWN_DURATION - elapsedTime.toFixed(1)} seconds before sending another message.`);
             return;
         }
+
+        if (!user.subscriber) {
+            bot.say(channel, `Fufu can only communicate with subscribed weary souls at the moment, please consider subscribing to TofuSenpai to support my development!`);
+            return;
+        }
+
         lastResponseTime = currentTime; // Update the last response time
 
         let text = message.slice(command.length).trim();
