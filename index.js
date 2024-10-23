@@ -81,7 +81,6 @@ bot.onMessage(async (channel, user, message, self) => {
 
     console.log(`printing user object`);
     console.dir(user, { depth: null});
-    console.log(`user ${user.username} is a sub? ${user.subscriber}`);
 
     if (ENABLE_CHANNEL_POINTS === 'true' && user['msg-id'] === 'highlighted-message') {
         console.log(`Highlighted message: ${message}`);
@@ -103,7 +102,7 @@ bot.onMessage(async (channel, user, message, self) => {
         }
 
         if (!user.subscriber && !self) {
-            bot.say(channel, `Sorry ${user.username}, Fufu can only communicate with subscribed weary souls at the moment, please consider subscribing to TofuSenpai to support my development!`);
+            bot.say(channel, `Ooof, sorry ${user.username}, Fufu can only communicate with subscribed weary souls at the moment, please consider subscribing to TofuSenpai to support my development!`);
             return;
         }
 
