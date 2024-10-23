@@ -102,8 +102,8 @@ bot.onMessage(async (channel, user, message, self) => {
             return;
         }
 
-        if (!user.subscriber) {
-            bot.say(channel, `Fufu can only communicate with subscribed weary souls at the moment, please consider subscribing to TofuSenpai to support my development!`);
+        if (!user.subscriber && !self) {
+            bot.say(channel, `Sorry ${user.username}, Fufu can only communicate with subscribed weary souls at the moment, please consider subscribing to TofuSenpai to support my development!`);
             return;
         }
 
