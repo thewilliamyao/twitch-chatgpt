@@ -79,9 +79,6 @@ bot.onMessage(async (channel, user, message, self) => {
     const currentTime = Date.now();
     const elapsedTime = (currentTime - lastResponseTime) / 1000; // Time in seconds
 
-    console.log(`printing user object`);
-    console.dir(user, { depth: null});
-
     if (ENABLE_CHANNEL_POINTS === 'true' && user['msg-id'] === 'highlighted-message') {
         console.log(`Highlighted message: ${message}`);
         if (elapsedTime < COOLDOWN_DURATION) {
